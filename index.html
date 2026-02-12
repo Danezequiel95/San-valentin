@@ -12,69 +12,114 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-font-family:sans-serif;
-background:linear-gradient(45deg,#ff4d6d,#ff8fab,#ffc2d1);
+font-family:Arial, sans-serif;
+background:linear-gradient(45deg,#ff4e8a,#ff9ac4,#ffd6e8);
 color:white;
 text-align:center;
 overflow:hidden;
 }
 
-h1{font-size:2em;margin-bottom:20px}
-
-button{
-font-size:1.2em;
-padding:12px 25px;
-margin:10px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-transition:.3s;
+h1{
+font-size:2.7em;
+animation:latido 1s infinite alternate;
 }
 
-#si{background:#00ff88;color:black}
-#no{background:#ff3b3b;color:white;position:absolute}
+p{
+font-size:1.3em;
+max-width:320px;
+}
+
+#btn{
+position:absolute;
+font-size:1.2em;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4e8a;
+cursor:pointer;
+transition:.2s;
+}
+
+#btn2{
+margin-top:20px;
+font-size:1.2em;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#fff;
+color:#ff4e8a;
+cursor:pointer;
+}
+
+@keyframes latido{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
 
 .corazon{
 position:absolute;
+color:#fff;
+font-size:20px;
 animation:flotar 6s linear infinite;
 }
 
 @keyframes flotar{
-0%{transform:translateY(0);opacity:1}
-100%{transform:translateY(-100vh);opacity:0}
+0%{transform:translateY(100vh) scale(0);}
+100%{transform:translateY(-10vh) scale(1.5);}
+}
+
+#secreto{
+opacity:0;
+margin-top:20px;
+font-size:1.5em;
+transition:1s;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Aldana ❤️<br>¿Querés ser mi San Valentín?</h1>
+<h1>Aldana 💖</h1>
+<p>Sos mi lugar favorito en el mundo ✨</p>
 
-<button id="si" onclick="acepto()">Sí 💘</button>
-<button id="no" onmouseover="escapar()">No 😢</button>
+<button id="btn">No me toques 😝</button>
+<button id="btn2" onclick="mostrar()">Abrir carta 💌</button>
+
+<div id="secreto">Te amo muchísimo ❤️</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function acepto(){
-document.body.innerHTML="<h1>Sabía que dirías que sí 😍💖</h1>";
+let btn=document.getElementById("btn");
+
+btn.addEventListener("mouseover",mover);
+btn.addEventListener("click",mover);
+
+function mover(){
+btn.style.top=Math.random()*80+"vh";
+btn.style.left=Math.random()*80+"vw";
 }
 
-function escapar(){
-let b=document.getElementById("no");
-b.style.top=Math.random()*80+"%";
-b.style.left=Math.random()*80+"%";
+function mostrar(){
+document.getElementById("secreto").style.opacity="1";
 }
 
 setInterval(()=>{
-let c=document.createElement("div");
-c.className="corazon";
-c.innerHTML="❤";
-c.style.left=Math.random()*100+"vw";
-c.style.fontSize=(Math.random()*20+15)+"px";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),6000);
+let corazon=document.createElement("div");
+corazon.className="corazon";
+corazon.innerHTML="❤";
+corazon.style.left=Math.random()*100+"vw";
+corazon.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(corazon);
+
+setTimeout(()=>{corazon.remove();},6000);
 },300);
 </script>
 
 </body>
 </html>
+
 
