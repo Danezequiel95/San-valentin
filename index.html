@@ -1,1 +1,80 @@
-<h1>Funciona 😎</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Aldana ❤️</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:sans-serif;
+background:linear-gradient(45deg,#ff4d6d,#ff8fab,#ffc2d1);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+h1{font-size:2em;margin-bottom:20px}
+
+button{
+font-size:1.2em;
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+#si{background:#00ff88;color:black}
+#no{background:#ff3b3b;color:white;position:absolute}
+
+.corazon{
+position:absolute;
+animation:flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-100vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Aldana ❤️<br>¿Querés ser mi San Valentín?</h1>
+
+<button id="si" onclick="acepto()">Sí 💘</button>
+<button id="no" onmouseover="escapar()">No 😢</button>
+
+<script>
+function acepto(){
+document.body.innerHTML="<h1>Sabía que dirías que sí 😍💖</h1>";
+}
+
+function escapar(){
+let b=document.getElementById("no");
+b.style.top=Math.random()*80+"%";
+b.style.left=Math.random()*80+"%";
+}
+
+setInterval(()=>{
+let c=document.createElement("div");
+c.className="corazon";
+c.innerHTML="❤";
+c.style.left=Math.random()*100+"vw";
+c.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
+
